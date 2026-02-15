@@ -6,6 +6,9 @@ from sklearn.metrics import (
     roc_auc_score,
     confusion_matrix,
 )
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve
+
 
 def evaluate_model(model, X_test, y_test):
     y_pred = model.predict(X_test)
@@ -19,3 +22,18 @@ def evaluate_model(model, X_test, y_test):
         "roc_auc": roc_auc_score(y_test, y_prob),
         "confusion_matrix": confusion_matrix(y_test, y_pred),
     }
+
+
+def plot_roc_curve(model, X_test, y_test):
+    y_prob = model.predict_proba(X_test)[:, 1]
+    fpr, tpr, thresholds = roc_curve(y_test, y_prob)
+
+    plt.figure()
+    plt.plot(fpr, tpr)
+    plt.plot([0, 1], [0, 1], linestyle="--")
+    plt.xlabel("False Positive Rate")
+    plt.ylabel("True Positive Rate")
+    plt.title("ROC Curve")
+    plt.show()
+
+    return fpr, tpr, thresholds

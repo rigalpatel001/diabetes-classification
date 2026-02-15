@@ -1,8 +1,10 @@
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
+
 def get_logistic_regression():
-    return LogisticRegression(max_iter=1000)
+    return LogisticRegression(max_iter=1000, class_weight="balanced")
+
 
 def get_random_forest():
     return RandomForestClassifier(
