@@ -140,5 +140,5 @@ Open:  http://127.0.0.1:8000/docs
 👨‍💻 Author
 
 Rigal Patel
-Applied Machine Learning Portfolio Project
+
 
